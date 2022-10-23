@@ -1,0 +1,15 @@
+body.dark-mode {
+    --bgColor: #171b22;
+    --backdropBg: rgba(23, 27, 34, 0.5);
+    --globalBorderColor: #2c2c2c;
+    --scrollbarTrack: #2c2c2c;
+    --scrollbarThumb: #6b6b6b;
+    --globalBg: #232323;
+    --tooltipBg: var(--white);
+    --tooltipColor: var(--dark);
+}
+
+label {
+    padding-left: 12px;
+    font-weight: normal;
+}

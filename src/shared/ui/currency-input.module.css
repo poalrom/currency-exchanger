@@ -1,0 +1,10 @@
+.error {
+    display: none;
+    padding-left: 10px;
+    font-size: 13px;
+    color: var(--red);
+}
+
+input:invalid + .error {
+    display: block;
+}

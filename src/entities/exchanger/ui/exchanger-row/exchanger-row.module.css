@@ -1,0 +1,33 @@
+.exchangerRow {
+    display: grid;
+    grid-template-columns: 15px 3fr 50px 2fr 66px 3fr 57px;
+}
+
+.exchangerInitialRow,
+.exchangerFinalRow {
+    display: grid;
+    grid-template-columns: 3fr 50px 2fr;
+}
+
+.expression {
+    font-size: 45px;
+    line-height: 1.25;
+    align-self: end;
+    text-align: center;
+}
+
+.notCentered {
+    text-align: left;
+}
+
+.expressionOperator {
+    text-align: center;
+    align-self: end;
+    line-height: 45px;
+    font-size: 20px;
+}
+
+.deleteButton {
+    margin-left: 10px;
+    align-self: end;
+}

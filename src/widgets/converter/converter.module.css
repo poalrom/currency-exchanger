@@ -1,0 +1,13 @@
+.converter {
+    max-width: 500px;
+}
+
+.converterRows {
+    display: grid;
+    gap: 12px;
+}
+
+.resultRate {
+    text-align: center;
+    font-weight: bold;
+}
