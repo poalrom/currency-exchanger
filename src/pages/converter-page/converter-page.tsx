@@ -1,13 +1,8 @@
+import { ElementsList } from "../../shared/ui/elements-list";
 import { Converter } from "../../widgets/converter/converter";
 
-import styles from "./converter-page.module.css";
-
 export const ConverterPage = () => {
-    return (
-        <div className={styles.converterPage}>
-            <Converter />
-        </div>
-    );
+    return <ElementsList Component={Converter} />;
 };
 
 ConverterPage.displayName = "ConverterPage";

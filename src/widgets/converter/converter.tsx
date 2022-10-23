@@ -19,14 +19,12 @@ export const Converter = observer(() => {
     return (
         <fieldset className={styles.converter}>
             <legend>Define converter sequence</legend>
-            <div className={styles.initialRow}>
-                <InitialExchangerRow
-                    key={initialRow.id}
-                    row={initialRow}
-                    onChange={onChange}
-                    onDelete={onDelete}
-                />
-            </div>
+            <InitialExchangerRow
+                key={initialRow.id}
+                row={initialRow}
+                onChange={onChange}
+                onDelete={onDelete}
+            />
             <p className="text-hr">Additional exchanges</p>
             <div className={styles.converterRows}>
                 {intermediateRows.map((row) => (
@@ -45,14 +43,12 @@ export const Converter = observer(() => {
                 </button>
             </div>
             <p className="text-hr">Finally received money</p>
-            <div className={styles.finalRow}>
-                <FinalExchangerRow
-                    key={finalRow.id}
-                    row={finalRow}
-                    onChange={onChange}
-                    onDelete={onDelete}
-                />
-            </div>
+            <FinalExchangerRow
+                key={finalRow.id}
+                row={finalRow}
+                onChange={onChange}
+                onDelete={onDelete}
+            />
             <ResultRate total={total} />
         </fieldset>
     );
