@@ -20,11 +20,19 @@ export const CurrencyInput: FC<ICurrencyInputProps> = observer(
 
         const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
             setValue(e.target.value);
-            onChange(currency(e.target.value));
+            if (e.target.value === "") {
+                onChange(undefined);
+            } else {
+                onChange(currency(e.target.value, { precision: 6 }));
+            }
         };
 
         useEffect(() => {
-            setValue(initialValue?.value.toString() || "");
+            const stringValue = initialValue?.value.toString();
+
+            if (stringValue && stringValue !== "0") {
+                setValue(stringValue);
+            }
         }, [initialValue?.value]);
 
         return (
@@ -37,7 +45,7 @@ export const CurrencyInput: FC<ICurrencyInputProps> = observer(
                     inputMode="numeric"
                     placeholder={placeholder}
                     value={value}
-                    pattern="[\d\s]*(\.\d{0,2})?"
+                    pattern="[\d\s]*(\.\d+)?"
                     onChange={handleChange}
                 />
                 <span className={styles.error}>

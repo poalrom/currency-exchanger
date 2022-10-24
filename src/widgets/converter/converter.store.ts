@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import { calcRate } from "../../entities/exchanger/model/calcRate";
 import { calcReceived } from "../../entities/exchanger/model/calcReceived";
+import { calcTotalRate } from "../../entities/exchanger/model/calcTotalRate";
 import {
     DEFAULT_EXCHANGE_MODE,
     ExchangeMode,
@@ -51,14 +52,12 @@ const recalcRows = action((rows: IStateRow[], changedRow: IStateRow) => {
             value = calcReceived({
                 paid: prevRow.received,
                 rate: row.rate,
-                fee: prevRow.fee,
             });
         } else {
             field = "rate";
             value = calcRate({
                 paid: prevRow.received,
                 received: row.received,
-                fee: prevRow.fee,
             });
         }
 
@@ -95,15 +94,7 @@ export function useConverterStore(): IStore {
     const [rows] = useState(() =>
         observable<IStateRow>([getNewRow(), getNewRow()])
     );
-    const [total] = useState(() =>
-        computed(() => {
-            return calcRate({
-                paid: rows[0].received,
-                received: rows[rows.length - 1].received,
-                fee: rows[0].fee,
-            });
-        })
-    );
+    const [total] = useState(() => computed(() => calcTotalRate(rows)));
 
     useEffect(() => {
         rows.forEach((row) => createReaction(rows, row));

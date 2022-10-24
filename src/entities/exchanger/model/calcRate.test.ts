@@ -36,23 +36,10 @@ describe("calcRate", () => {
         expect(rate.value).toBe(0);
     });
 
-    it("should calculate with fee", () => {
-        const input: ICalcRateInput = {
-            paid: currency(100),
-            received: currency(200),
-            fee: currency(100),
-        };
-
-        const rate = calcRate(input);
-
-        expect(rate.value).toBe(1);
-    });
-
     it("should return 0 if received is negative", () => {
         const input: ICalcRateInput = {
             paid: currency(-100),
             received: currency(200),
-            fee: currency(100),
         };
 
         const rate = calcRate(input);
@@ -64,19 +51,6 @@ describe("calcRate", () => {
         const input: ICalcRateInput = {
             paid: currency(100),
             received: currency(-200),
-            fee: currency(100),
-        };
-
-        const rate = calcRate(input);
-
-        expect(rate.value).toBe(0);
-    });
-
-    it("should return 0 if fee is negative", () => {
-        const input: ICalcRateInput = {
-            paid: currency(100),
-            received: currency(200),
-            fee: currency(-100),
         };
 
         const rate = calcRate(input);
